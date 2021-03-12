@@ -1,0 +1,14 @@
+apply from: rootProject.file('gradle/android-application.gradle')
+
+android {
+    defaultConfig {
+        applicationId "com.github.madfoxoo.foxwallet"
+        versionCode 1
+        versionName "0.1.0"
+    }
+}
+
+dependencies {
+    implementation deps.libraries.androidx.appcompat
+    implementation deps.libraries.google.material
+}

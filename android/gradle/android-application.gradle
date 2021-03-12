@@ -1,0 +1,51 @@
+apply from: rootProject.file('gradle/jacoco.gradle')
+apply from: rootProject.file('gradle/lint.gradle')
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion deps.build.compileSdkVersion
+    buildToolsVersion deps.build.buildToolsVersion
+
+    defaultConfig {
+        targetSdkVersion deps.build.targetSdkVersion
+        minSdkVersion deps.build.minSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility deps.build.javaVersion
+        targetCompatibility deps.build.javaVersion
+    }
+
+    kotlinOptions {
+        jvmTarget = deps.build.kotlinJvmTarget
+    }
+
+    sourceSets {
+        main.java.srcDirs += ['src/main/kotlin', 'src/main/kotlinx']
+        test.java.srcDirs += ['src/test/kotlin', 'src/test/kotlinx']
+        androidTest.java.srcDirs += ['src/androidTest/kotlin', 'src/androidTest/kotlinx']
+    }
+}
+
+repositories {
+    google()
+    jcenter()
+    maven { url deps.build.urls.gradlePlugins }
+}
+
+dependencies {
+    implementation deps.libraries.kotlinStdlib
+}

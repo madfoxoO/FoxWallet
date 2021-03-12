@@ -1,0 +1,80 @@
+/**
+ * Useful links:
+ * https://docs.gradle.org/current/userguide/jacoco_plugin.html
+ * https://android.jlelse.eu/improving-code-coverage-in-android-app-be8783370c1a
+ * https://www.rallyhealth.com/coding/code-coverage-for-android-testing
+ */
+
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = deps.build.jacocoVersion
+}
+
+def jacocoSourceDirs = project.provider {
+    ['src/main/java', 'src/main/kotlin', 'src/main/kotlinx']
+}
+
+def jacocoClassDirs = project.provider {
+    def commonFileFilter = [
+        '**/R.class',
+        '**/R$*.class',
+        '**/BuildConfig.*',
+        '**/Manifest*.*'
+    ]
+    def moduleFileFilter = project.ext.find('jacocoFileFilter') ?: []
+    def filter = commonFileFilter + moduleFileFilter
+
+    def javaClassDir = fileTree(
+        dir: "$project.buildDir/intermediates/javac/debug/classes",
+        excludes: filter
+    )
+    def kotlinClassDir = fileTree(
+        dir: "$project.buildDir/tmp/kotlin-classes/debug",
+        excludes: filter
+    )
+
+    [javaClassDir, kotlinClassDir]
+}
+
+def jacocoExecutionData = project.provider {
+    fileTree(
+        dir: project.buildDir,
+        includes: ['jacoco/testDebugUnitTest.exec']
+    )
+}
+
+tasks.register('jacocoTestReport', JacocoReport.class).configure {
+    description = 'Generates Jacoco coverage report'
+
+    dependsOn = ['testDebugUnitTest']
+
+    sourceDirectories.setFrom(jacocoSourceDirs.get())
+    classDirectories.setFrom(jacocoClassDirs.get())
+    executionData.setFrom(jacocoExecutionData.get())
+
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+tasks.register('jacocoTestCoverageVerification', JacocoCoverageVerification.class).configure {
+    description = 'Verifies that code has required test coverage'
+
+    dependsOn = ['jacocoTestReport']
+
+    sourceDirectories.setFrom(jacocoSourceDirs.get())
+    classDirectories.setFrom(jacocoClassDirs.get())
+    executionData.setFrom(jacocoExecutionData.get())
+
+    violationRules {
+        failOnViolation = true
+
+        rule {
+            limit {
+                minimum = 0.20
+            }
+        }
+    }
+}
