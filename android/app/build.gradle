@@ -1,4 +1,8 @@
 apply from: rootProject.file('gradle/android-application.gradle')
+apply from: rootProject.file('gradle/android-test.gradle')
+apply from: rootProject.file('gradle/test.gradle')
+
+apply plugin: 'kotlin-kapt'
 
 android {
     defaultConfig {
@@ -9,6 +13,15 @@ android {
 }
 
 dependencies {
+    kapt deps.libraries.google.daggerCompiler
+    kapt deps.libraries.ribCompiler
+
+    compileOnly deps.libraries.jsr
+
+    implementation project(':core:rib')
     implementation deps.libraries.androidx.appcompat
     implementation deps.libraries.google.material
+    implementation deps.libraries.google.dagger
+
+    testImplementation deps.test.rib
 }
