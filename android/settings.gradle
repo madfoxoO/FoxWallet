@@ -6,5 +6,6 @@ include ':app'
 // core modules
 include ':core:utils'
 include ':core:rib'
+include ':core:dagger'
 
 // feature modules
