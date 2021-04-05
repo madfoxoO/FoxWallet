@@ -1,0 +1,14 @@
+apply plugin: 'kotlin-allopen'
+
+allOpen {
+    annotation 'com.github.madfoxoo.foxwallet.core.test.Mockable'
+}
+
+dependencies {
+    implementation project(':core:utils')
+
+    testImplementation deps.test.junit
+    testImplementation deps.test.hamcrestLibrary
+    testImplementation deps.test.mockitoCore
+    testImplementation deps.test.mockitoKotlin
+}

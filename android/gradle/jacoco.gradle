@@ -44,10 +44,14 @@ def jacocoExecutionData = project.provider {
     )
 }
 
-tasks.register('jacocoTestReport', JacocoReport.class).configure {
+tasks.register('jacocoGenerateTestReport', JacocoReport.class).configure {
     description = 'Generates Jacoco coverage report'
 
-    dependsOn = ['testDebugUnitTest']
+    if (project.plugins.findPlugin('java-library') != null) {
+        dependsOn = ['test']
+    } else {
+        dependsOn = ['testDebugUnitTest']
+    }
 
     sourceDirectories.setFrom(jacocoSourceDirs.get())
     classDirectories.setFrom(jacocoClassDirs.get())
@@ -59,10 +63,10 @@ tasks.register('jacocoTestReport', JacocoReport.class).configure {
     }
 }
 
-tasks.register('jacocoTestCoverageVerification', JacocoCoverageVerification.class).configure {
+tasks.register('jacocoVerifyTestCoverage', JacocoCoverageVerification.class).configure {
     description = 'Verifies that code has required test coverage'
 
-    dependsOn = ['jacocoTestReport']
+    dependsOn = ['jacocoGenerateTestReport']
 
     sourceDirectories.setFrom(jacocoSourceDirs.get())
     classDirectories.setFrom(jacocoClassDirs.get())

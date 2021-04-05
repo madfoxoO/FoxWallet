@@ -1,0 +1,11 @@
+android {
+    sourceSets {
+        def testFixturesDirs = [
+            'src/testFixtures/java',
+            'src/testFixtures/kotlin',
+            'src/testFixtures/kotlinx'
+        ]
+        test.java.srcDirs += testFixturesDirs
+        androidTest.java.srcDirs += testFixturesDirs
+    }
+}
