@@ -4,5 +4,7 @@ rootProject.name = "FoxDiary"
 include ':app'
 
 // core modules
+include ':core:utils'
+include ':core:rib'
 
 // feature modules
