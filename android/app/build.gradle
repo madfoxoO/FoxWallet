@@ -19,6 +19,7 @@ dependencies {
     compileOnly deps.libraries.jsr
 
     implementation project(':core:rib')
+    implementation project(':feature:currencies:list')
     implementation deps.libraries.androidx.appcompat
     implementation deps.libraries.google.material
     implementation deps.libraries.google.dagger

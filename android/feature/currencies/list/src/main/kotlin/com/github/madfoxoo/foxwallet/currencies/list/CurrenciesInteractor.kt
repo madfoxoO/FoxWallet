@@ -1,4 +1,4 @@
-package com.github.madfoxoo.foxwallet.root
+package com.github.madfoxoo.foxwallet.currencies.list
 
 import com.uber.rib.core.Bundle
 import com.uber.rib.core.Interactor
@@ -6,16 +6,15 @@ import com.uber.rib.core.RibInteractor
 import javax.inject.Inject
 
 /**
- * Coordinates Business Logic for [RootScope].
+ * Coordinates Business Logic for [CurrenciesScope].
  */
 @RibInteractor
-class RootInteractor : Interactor<RootPresenter, RootRouter>() {
+class CurrenciesInteractor : Interactor<CurrenciesPresenter, CurrenciesRouter>() {
 
     @Inject
-    lateinit var presenter: RootPresenter
+    lateinit var presenter: CurrenciesPresenter
 
     override fun didBecomeActive(savedInstanceState: Bundle?) {
         super.didBecomeActive(savedInstanceState)
-        router.attachCurrencies()
     }
 }

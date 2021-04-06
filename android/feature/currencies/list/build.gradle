@@ -1,0 +1,17 @@
+apply from: rootProject.file('gradle/android-library.gradle')
+apply from: rootProject.file('gradle/test.gradle')
+
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    kapt deps.libraries.google.daggerCompiler
+    kapt deps.libraries.ribCompiler
+
+    compileOnly deps.libraries.jsr
+
+    implementation project(':core:rib')
+    implementation deps.libraries.google.dagger
+    implementation deps.libraries.androidx.recyclerview
+
+    testImplementation deps.test.rib
+}

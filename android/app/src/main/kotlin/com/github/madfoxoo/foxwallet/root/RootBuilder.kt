@@ -3,6 +3,7 @@ package com.github.madfoxoo.foxwallet.root
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.github.madfoxoo.foxwallet.R
+import com.github.madfoxoo.foxwallet.currencies.list.CurrenciesBuilder
 import com.uber.rib.core.InteractorBaseComponent
 import com.uber.rib.core.ViewBuilder
 import dagger.Binds
@@ -47,7 +48,7 @@ class RootBuilder(dependency: ParentComponent) :
 
         @RootScope
         @Binds
-        internal abstract fun presenter(view: RootView): RootInteractor.RootPresenter
+        internal abstract fun presenter(view: RootView): RootPresenter
 
         @dagger.Module
         companion object {
@@ -63,7 +64,8 @@ class RootBuilder(dependency: ParentComponent) :
                 return RootRouter(
                     view,
                     interactor,
-                    component
+                    component,
+                    CurrenciesBuilder(component)
                 )
             }
         }
@@ -76,6 +78,7 @@ class RootBuilder(dependency: ParentComponent) :
     )
     interface Component :
         InteractorBaseComponent<RootInteractor>,
+        CurrenciesBuilder.ParentComponent,
         BuilderComponent {
 
         @dagger.Component.Builder

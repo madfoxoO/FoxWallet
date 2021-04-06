@@ -1,15 +1,12 @@
-package com.github.madfoxoo.foxwallet.root
+package com.github.madfoxoo.foxwallet.currencies.list
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 
-/**
- * Top level view for {@link RootBuilder.RootScope}.
- */
-class RootView @JvmOverloads constructor(
+class CurrenciesView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : FrameLayout(context, attrs, defStyle),
-    RootPresenter
+    CurrenciesPresenter
