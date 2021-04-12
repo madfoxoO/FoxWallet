@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.FoxWallet" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryVariant">@color/orange_light</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/gray</item>
+        <item name="colorSecondaryVariant">@color/gray_light</item>
+        <item name="colorOnSecondary">@color/charcoal</item>
+
+        <item name="android:colorBackground">@color/gray_light_2</item>
+        <item name="colorOnBackground">@color/charcoal</item>
+
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/charcoal</item>
+
+        <item name="colorError">@color/red</item>
+        <item name="colorOnError">@color/white</item>
+
+        <item name="colorToolbar">@color/orange</item>
+        <item name="colorOnToolbar">@color/white</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="Widget.FoxWallet.TextView.Toolbar.Title" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceHeadline6</item>
+        <item name="android:textColor">@color/fw_toolbar_btn_text_color_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="Widget.FoxWallet.TextView.Body1" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+        <item name="android:textColor">@color/fw_tv_primary_text_color_selector</item>
+    </style>
+
+    <style name="Widget.FoxWallet.TextView.Body2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+        <item name="android:textColor">@color/fw_tv_secondary_text_color_selector</item>
+    </style>
+
+    <style name="Widget.FoxWallet.Button.Toolbar" parent="">
+        <item name="android:padding">@dimen/fw_padding_m</item>
+        <item name="android:background">@drawable/fw_toolbar_btn_bg_ripple</item>
+        <item name="android:tint">@color/fw_toolbar_btn_text_color_selector</item>
+        <item name="android:tintMode">src_in</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="Widget.FoxWallet.Button" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.FoxWallet.Button</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Widget.FoxWallet.Surface.Content" parent="">
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:elevation">@dimen/fw_elevation_surface</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.FoxWallet.Button" parent="">
+        <item name="cornerSize">@dimen/fw_margin_xxl</item>
+    </style>
+</resources>

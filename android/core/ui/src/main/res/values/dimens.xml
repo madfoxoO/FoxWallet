@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fw_padding_m">16dp</dimen>
+
+    <dimen name="fw_margin_xs">4dp</dimen>
+    <dimen name="fw_margin_l">20dp</dimen>
+    <dimen name="fw_margin_xxl">36dp</dimen>
+
+    <dimen name="fw_size_toolbar">56dp</dimen>
+
+    <dimen name="fw_corner_size_content">16dp</dimen>
+    <dimen name="fw_corner_size_button">24dp</dimen>
+
+    <dimen name="fw_elevation_surface">4dp</dimen>
+</resources>
