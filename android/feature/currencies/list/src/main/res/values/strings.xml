@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feature_currencies__screen_title">Currencies</string>
+    <string name="feature_currencies__content_description_currency_usd">US Dollar sign</string>
+    <string name="feature_currencies__no_currencies_title">No Currencies added</string>
+    <string name="feature_currencies__no_currencies_description">Please add some currency to your account</string>
+    <string name="feature_currencies__action_add">Add Currency</string>
+</resources>

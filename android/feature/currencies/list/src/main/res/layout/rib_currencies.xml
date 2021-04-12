@@ -1,12 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.github.madfoxoo.foxwallet.currencies.list.CurrenciesView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.github.madfoxoo.foxwallet.currencies.list.CurrenciesView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorToolbar">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        style="@style/Widget.FoxWallet.Button.Toolbar"
+        android:layout_width="@dimen/fw_size_toolbar"
+        android:layout_height="@dimen/fw_size_toolbar"
+        android:contentDescription="@string/core_ui__content_description_arrow_back"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/space_toolbar_action"
+        android:layout_width="@dimen/fw_size_toolbar"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/Widget.FoxWallet.TextView.Toolbar.Title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/fw_margin_xs"
+        android:layout_marginStart="@dimen/fw_margin_xs"
+        android:text="@string/feature_currencies__screen_title"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintEnd_toStartOf="@id/space_toolbar_action"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_currencies"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        style="@style/Widget.FoxWallet.Surface.Content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back" />
 
 </com.github.madfoxoo.foxwallet.currencies.list.CurrenciesView>

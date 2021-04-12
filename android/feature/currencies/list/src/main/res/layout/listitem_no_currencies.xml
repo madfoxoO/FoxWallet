@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_no_currencies"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/fw_padding_m">
+
+    <ImageView
+        android:id="@+id/iv_currency_sign"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/fw_circle_shape"
+        android:backgroundTint="?attr/colorSecondaryVariant"
+        android:contentDescription="@string/feature_currencies__content_description_currency_usd"
+        android:padding="39dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_currency_usd"
+        app:tint="?attr/colorOnSecondary" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_title"
+        style="@style/Widget.FoxWallet.TextView.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fw_margin_xxl"
+        android:text="@string/feature_currencies__no_currencies_title" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_description"
+        style="@style/Widget.FoxWallet.TextView.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fw_margin_xs"
+        android:gravity="center"
+        android:text="@string/feature_currencies__no_currencies_description" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add"
+        style="@style/Widget.FoxWallet.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fw_margin_l"
+        android:text="@string/feature_currencies__action_add"
+        app:icon="@drawable/ic_plus" />
+
+</LinearLayout>
