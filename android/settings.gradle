@@ -7,6 +7,7 @@ include ':app'
 include ':core:utils'
 include ':core:rib'
 include ':core:dagger'
+include ':core:recycler'
 include ':core:ui'
 
 // feature modules
