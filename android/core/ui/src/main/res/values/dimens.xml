@@ -8,7 +8,7 @@
 
     <dimen name="fw_size_toolbar">56dp</dimen>
 
-    <dimen name="fw_corner_size_content">16dp</dimen>
+    <dimen name="fw_corner_size_backdrop_front">16dp</dimen>
     <dimen name="fw_corner_size_button">24dp</dimen>
 
     <dimen name="fw_elevation_surface">4dp</dimen>

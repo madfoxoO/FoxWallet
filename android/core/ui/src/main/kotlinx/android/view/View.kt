@@ -4,6 +4,13 @@ import android.graphics.Rect
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+fun View.updateVisibility(visible: Boolean) {
+    val targetVisibility = if (visible) View.VISIBLE else View.GONE
+    if (visibility != targetVisibility) {
+        visibility = targetVisibility
+    }
+}
+
 fun View.updatePadding(
     left: Int = paddingLeft,
     top: Int = paddingTop,
