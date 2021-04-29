@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FrontLayerBehavior_Layout">
+        <attr name="behavior_expandedAnchorId" format="reference" />
+        <attr name="behavior_collapsedAnchorId" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="MaskLayerBehavior_Layout">
+        <attr name="behavior_anchorId" format="reference" />
+    </declare-styleable>
+</resources>
