@@ -1,4 +1,4 @@
-rootProject.name = "FoxDiary"
+rootProject.name = "FoxWallet"
 
 // app modules
 include ':app'
@@ -7,5 +7,6 @@ include ':app'
 include ':core:utils'
 include ':core:rib'
 include ':core:dagger'
+include ':core:ui'
 
 // feature modules
