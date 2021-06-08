@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FoxWallet.DayNight" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue_90</item>
+        <item name="colorPrimaryVariant">@color/blue_90</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/teal_70</item>
+        <item name="colorSecondaryVariant">@color/teal_50</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/gray_30</item>
+
+        <item name="android:colorBackground">@color/gray_90</item>
+        <item name="colorOnBackground">@color/gray_30</item>
+
+        <item name="colorError">@color/red</item>
+        <item name="colorOnError">@color/white</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="Widget.FoxWallet.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.FoxWallet.BottomAppBar</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+        <item name="fabCradleMargin">@dimen/fw_margin_xs</item>
+    </style>
+
+    <style name="Widget.FoxWallet.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="elevation">0dp</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.FoxWallet.BottomAppBar" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/fw_corner_size_s</item>
+        <item name="cornerSizeTopRight">@dimen/fw_corner_size_s</item>
+    </style>
+</resources>

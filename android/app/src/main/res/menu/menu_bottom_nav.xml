@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/action_home"
-        android:title="Home"
-        android:icon="@drawable/ic_home_outline" />
+        android:title="@string/app__navigation_menu_home"
+        android:icon="@drawable/selector_menu_home" />
 
     <item android:id="@+id/action_payments"
-        android:title="Payments"
-        android:icon="@drawable/ic_wallet_outline" />
+        android:title="@string/app__navigation_menu_payments"
+        android:icon="@drawable/selector_menu_wallet" />
 
-    <item android:id="@+id/action_placeholder"
+    <item android:id="@+id/action_dummy"
         android:title=""
         android:enabled="false" />
 
     <item android:id="@+id/action_statistics"
-        android:title="Statistics"
+        android:title="@string/app__navigation_menu_statistics"
         android:icon="@drawable/ic_chart_arc" />
 
     <item android:id='@+id/action_menu'
-        android:title="Menu"
+        android:title="@string/app__navigation_menu_menu"
         android:icon="@drawable/ic_menu" />
 
 </menu>
