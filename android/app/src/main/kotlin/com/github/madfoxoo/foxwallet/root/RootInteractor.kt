@@ -9,7 +9,7 @@ import javax.inject.Inject
  * Coordinates Business Logic for [RootScope].
  */
 @RibInteractor
-class RootInteractor : Interactor<RootInteractor.RootPresenter, RootRouter>() {
+class RootInteractor : Interactor<RootPresenter, RootRouter>() {
 
     @Inject
     lateinit var presenter: RootPresenter
@@ -18,9 +18,4 @@ class RootInteractor : Interactor<RootInteractor.RootPresenter, RootRouter>() {
         super.didBecomeActive(savedInstanceState)
         router.attachNavigation()
     }
-
-    /**
-     * Presenter interface implemented by this RIB's view.
-     */
-    interface RootPresenter
 }

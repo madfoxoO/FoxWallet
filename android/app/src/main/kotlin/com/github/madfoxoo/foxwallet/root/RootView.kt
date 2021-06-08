@@ -12,4 +12,4 @@ class RootView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : FrameLayout(context, attrs, defStyle),
-    RootInteractor.RootPresenter
+    RootPresenter

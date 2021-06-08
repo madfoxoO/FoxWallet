@@ -48,7 +48,7 @@ class RootBuilder(dependency: ParentComponent) :
 
         @RootScope
         @Binds
-        internal abstract fun presenter(view: RootView): RootInteractor.RootPresenter
+        internal abstract fun presenter(view: RootView): RootPresenter
 
         @dagger.Module
         companion object {
