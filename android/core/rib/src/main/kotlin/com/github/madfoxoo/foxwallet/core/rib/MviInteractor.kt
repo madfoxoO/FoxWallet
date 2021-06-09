@@ -43,15 +43,14 @@ abstract class MviInteractor<S : Any, P : MviPresenter<S, *>, R : Router<*>> : I
             .autoDispose(this)
             .subscribe { statesSubject.onNext(it) }
 
-        Observable.fromIterable(createInitialActions())
-            .concatWith(actionsSubject)
+        Observable.merge(actionsSubject, observeInitialActions())
             .flatMap { action -> handle(action) }
             .autoDispose(this)
             .subscribe { actionsSubject.onNext(it) }
 
         presenter.observeUiEvents()
             .autoDispose(this)
-            .subscribe { actionsSubject.onNext(it!!) }
+            .subscribe { actionsSubject.onNext(it) }
 
         statesSubject.observeOn(uiScheduler)
             .autoDispose(this)
@@ -60,7 +59,7 @@ abstract class MviInteractor<S : Any, P : MviPresenter<S, *>, R : Router<*>> : I
 
     protected abstract fun createInitialState(savedInstanceState: Bundle?): S
 
-    protected abstract fun createInitialActions(): List<Any>
+    protected abstract fun observeInitialActions(): Observable<Any>
 
     protected abstract fun reduce(state: S, action: Any): S
 
