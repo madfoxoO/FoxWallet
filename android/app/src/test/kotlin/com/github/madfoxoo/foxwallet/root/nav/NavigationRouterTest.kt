@@ -93,6 +93,17 @@ class NavigationRouterTest {
     }
 
     @Test
+    fun detachesPaymentsRib() {
+        stubPaymentsRib()
+
+        router.attachPayments()
+        router.detachPayments()
+
+        RouterHelper.verifyDetached(paymentsRouter)
+        verify(view).removeView(paymentsView)
+    }
+
+    @Test
     fun attachesStatisticsRib() {
         stubStatisticsRib()
 
@@ -103,6 +114,17 @@ class NavigationRouterTest {
     }
 
     @Test
+    fun detachesStatisticsRib() {
+        stubStatisticsRib()
+
+        router.attachStatistics()
+        router.detachStatistics()
+
+        RouterHelper.verifyDetached(statisticsRouter)
+        verify(view).removeView(statisticsView)
+    }
+
+    @Test
     fun attachesMenuRib() {
         stubMenuRib()
 
@@ -110,6 +132,17 @@ class NavigationRouterTest {
 
         RouterHelper.verifyAttached(menuRouter)
         verify(view).addView(menuView)
+    }
+
+    @Test
+    fun detachesMenuRib() {
+        stubMenuRib()
+
+        router.attachMenu()
+        router.detachMenu()
+
+        RouterHelper.verifyDetached(menuRouter)
+        verify(view).removeView(menuView)
     }
 
     private fun stubHomeRib() {
