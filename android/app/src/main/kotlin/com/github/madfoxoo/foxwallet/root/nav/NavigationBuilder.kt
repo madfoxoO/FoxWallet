@@ -3,6 +3,7 @@ package com.github.madfoxoo.foxwallet.root.nav
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.github.madfoxoo.foxwallet.R
+import com.github.madfoxoo.foxwallet.root.nav.home.HomeBuilder
 import com.uber.rib.core.InteractorBaseComponent
 import com.uber.rib.core.ViewBuilder
 import dagger.Binds
@@ -41,8 +42,8 @@ class NavigationBuilder(dependency: ParentComponent) :
         parentViewGroup: ViewGroup
     ): NavigationView {
         return inflater
-          .inflate(R.layout.rib_nav, parentViewGroup, false)
-          .let { it as NavigationView }
+            .inflate(R.layout.rib_nav, parentViewGroup, false)
+            .let { it as NavigationView }
     }
 
     interface ParentComponent
@@ -66,9 +67,10 @@ class NavigationBuilder(dependency: ParentComponent) :
                 interactor: NavigationInteractor
             ): NavigationRouter {
                 return NavigationRouter(
-                  view,
-                  interactor,
-                  component
+                    view,
+                    interactor,
+                    component,
+                    HomeBuilder(component)
                 )
             }
         }
@@ -79,7 +81,10 @@ class NavigationBuilder(dependency: ParentComponent) :
         modules = [Module::class],
         dependencies = [ParentComponent::class]
     )
-    interface Component : InteractorBaseComponent<NavigationInteractor>, BuilderComponent {
+    interface Component :
+        InteractorBaseComponent<NavigationInteractor>,
+        HomeBuilder.ParentComponent,
+        BuilderComponent {
 
         @dagger.Component.Builder
         interface Builder {
