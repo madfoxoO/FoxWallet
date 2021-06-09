@@ -21,7 +21,7 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
-class NavigatorRouterTest {
+class NavigationRouterTest {
 
     @Mock lateinit var homeBuilder: HomeBuilder
     @Mock lateinit var homeRouter: HomeRouter
@@ -69,6 +69,17 @@ class NavigatorRouterTest {
 
         RouterHelper.verifyAttached(homeRouter)
         verify(view).addView(homeView)
+    }
+
+    @Test
+    fun detachesHomeRib() {
+        stubHomeRib()
+
+        router.attachHome()
+        router.detachHome()
+
+        RouterHelper.verifyDetached(homeRouter)
+        verify(view).removeView(homeView)
     }
 
     @Test

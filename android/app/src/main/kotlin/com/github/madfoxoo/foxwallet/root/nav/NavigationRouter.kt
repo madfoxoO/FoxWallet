@@ -2,6 +2,7 @@ package com.github.madfoxoo.foxwallet.root.nav
 
 import com.github.madfoxoo.foxwallet.core.test.Mockable
 import com.github.madfoxoo.foxwallet.root.nav.home.HomeBuilder
+import com.github.madfoxoo.foxwallet.root.nav.home.HomeRouter
 import com.github.madfoxoo.foxwallet.root.nav.menu.MenuBuilder
 import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsBuilder
 import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsBuilder
@@ -25,10 +26,21 @@ class NavigationRouter(
     component
 ) {
 
+    private var homeRouter: HomeRouter? = null
+
     fun attachHome() {
         val router = homeBuilder.build(view)
         attachChild(router)
         view.addView(router.view)
+        homeRouter = router
+    }
+
+    fun detachHome() {
+        val router = homeRouter ?: return
+
+        detachChild(router)
+        view.removeView(router.view)
+        homeRouter = null
     }
 
     fun attachPayments() {
