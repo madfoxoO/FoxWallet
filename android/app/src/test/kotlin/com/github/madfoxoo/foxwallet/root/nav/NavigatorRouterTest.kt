@@ -6,6 +6,9 @@ import com.github.madfoxoo.foxwallet.root.nav.home.HomeView
 import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsBuilder
 import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsRouter
 import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsView
+import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsBuilder
+import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsRouter
+import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsView
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -25,6 +28,10 @@ class NavigatorRouterTest {
     @Mock lateinit var paymentsRouter: PaymentsRouter
     @Mock lateinit var paymentsView: PaymentsView
 
+    @Mock lateinit var statisticsBuilder: StatisticsBuilder
+    @Mock lateinit var statisticsRouter: StatisticsRouter
+    @Mock lateinit var statisticsView: StatisticsView
+
     @Mock lateinit var component: NavigationBuilder.Component
     @Mock lateinit var interactor: NavigationInteractor
     @Mock lateinit var view: NavigationView
@@ -35,13 +42,23 @@ class NavigatorRouterTest {
     fun setup() {
         MockitoAnnotations.openMocks(this)
 
-        router = NavigationRouter(view, interactor, component, homeBuilder, paymentsBuilder)
+        router = NavigationRouter(
+            view,
+            interactor,
+            component,
+            homeBuilder,
+            paymentsBuilder,
+            statisticsBuilder
+        )
 
         whenever(homeBuilder.build(any())).thenReturn(homeRouter)
         whenever(homeRouter.view).thenReturn(homeView)
 
         whenever(paymentsBuilder.build(any())).thenReturn(paymentsRouter)
         whenever(paymentsRouter.view).thenReturn(paymentsView)
+
+        whenever(statisticsBuilder.build(any())).thenReturn(statisticsRouter)
+        whenever(statisticsRouter.view).thenReturn(statisticsView)
     }
 
     @Test
@@ -60,5 +77,14 @@ class NavigatorRouterTest {
 
         RouterHelper.verifyAttached(paymentsRouter)
         verify(view).addView(paymentsView)
+    }
+
+    @Test
+    fun attachesStatisticsRib() {
+        RouterHelper.attach(router)
+        router.attachStatistics()
+
+        RouterHelper.verifyAttached(statisticsRouter)
+        verify(view).addView(statisticsView)
     }
 }
