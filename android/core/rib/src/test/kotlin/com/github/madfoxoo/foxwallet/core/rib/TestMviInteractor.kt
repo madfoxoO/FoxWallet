@@ -6,8 +6,6 @@ import com.uber.rib.core.ViewRouter
 import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.PublishSubject
-import io.reactivex.subjects.Subject
 
 open class TestMviInteractor : MviInteractor<String, MviPresenter<String, String>, ViewRouter<View, TestMviInteractor>>() {
 

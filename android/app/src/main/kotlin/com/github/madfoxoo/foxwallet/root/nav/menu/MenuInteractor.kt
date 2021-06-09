@@ -10,6 +10,6 @@ import javax.inject.Inject
 @RibInteractor
 class MenuInteractor : Interactor<MenuPresenter, MenuRouter>() {
 
-  @Inject
-  lateinit var presenter: MenuPresenter
+    @Inject
+    lateinit var presenter: MenuPresenter
 }

@@ -10,6 +10,6 @@ import javax.inject.Inject
 @RibInteractor
 class PaymentsInteractor : Interactor<PaymentsPresenter, PaymentsRouter>() {
 
-  @Inject
-  lateinit var presenter: PaymentsPresenter
+    @Inject
+    lateinit var presenter: PaymentsPresenter
 }

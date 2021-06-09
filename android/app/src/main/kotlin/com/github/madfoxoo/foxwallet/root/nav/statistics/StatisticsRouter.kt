@@ -1,8 +1,6 @@
 package com.github.madfoxoo.foxwallet.root.nav.statistics
 
-import android.view.View
 import com.github.madfoxoo.foxwallet.core.test.Mockable
-
 import com.uber.rib.core.ViewRouter
 
 /**

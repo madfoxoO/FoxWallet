@@ -60,9 +60,9 @@ class HomeBuilder(dependency: ParentComponent) :
                 interactor: HomeInteractor
             ): HomeRouter {
                 return HomeRouter(
-                  view,
-                  interactor,
-                  component
+                    view,
+                    interactor,
+                    component
                 )
             }
         }

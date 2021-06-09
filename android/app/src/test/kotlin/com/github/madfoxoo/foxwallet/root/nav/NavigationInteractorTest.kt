@@ -9,8 +9,10 @@ import org.mockito.MockitoAnnotations
 
 class NavigationInteractorTest {
 
-    @Mock lateinit var router: NavigationRouter
-    @Mock lateinit var presenter: NavigationPresenter
+    @Mock
+    lateinit var router: NavigationRouter
+    @Mock
+    lateinit var presenter: NavigationPresenter
 
     private lateinit var interactor: NavigationInteractor
 
@@ -22,7 +24,7 @@ class NavigationInteractorTest {
 
     @Test
     fun attachesHomeRibWhenBecomesActive() {
-         InteractorHelper.attach(interactor, presenter, router, null)
+        InteractorHelper.attach(interactor, presenter, router, null)
 
         verify(router).attachHome()
     }

@@ -13,7 +13,6 @@ import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsBuilder
 import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsRouter
 import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsView
 import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.uber.rib.core.RouterHelper
@@ -61,8 +60,6 @@ class NavigatorRouterTest {
         )
         RouterHelper.attach(router)
     }
-
-
 
     @Test
     fun attachesHomeRib() {
