@@ -16,7 +16,8 @@ import javax.inject.Inject
  */
 @RibInteractor
 @Mockable
-class NavigationInteractor : MviInteractor<NavigationInteractor.State, NavigationPresenter, NavigationRouter>() {
+class NavigationInteractor :
+    MviInteractor<NavigationInteractor.State, NavigationPresenter, NavigationRouter>() {
 
     @Inject
     override lateinit var presenter: NavigationPresenter
@@ -46,7 +47,7 @@ class NavigationInteractor : MviInteractor<NavigationInteractor.State, Navigatio
 
     private fun reduce(state: State, sideEffect: SideEffect): State {
         return when (sideEffect) {
-            is SideEffect.RibAttached -> state.copy(selectedNavigationItemId = sideEffect.id)
+            is SideEffect.OnRibSwitched -> state.copy(selectedNavigationItem = sideEffect.item)
         }
     }
 
@@ -62,35 +63,76 @@ class NavigationInteractor : MviInteractor<NavigationInteractor.State, Navigatio
         return when (uiEvent) {
             is UiEvent.NavigationItemSelected -> {
                 observeStates().firstElement()
-                    .filter { state -> state.selectedNavigationItemId != uiEvent.id }
-                    .doOnSuccess {
-                        router.detachHome()
-                        router.attachPayments()
+                    .filter { state -> state.selectedNavigationItem != uiEvent.item }
+                    .doOnSuccess { state ->
+                        state.selectedNavigationItem.detach(router)
+                        uiEvent.item.attach(router)
                     }
-                    .flatMapObservable {
-                        Observable.just(SideEffect.RibAttached(uiEvent.id))
-                    }
+                    .map<Any> { SideEffect.OnRibSwitched(uiEvent.item) }
+                    .toObservable()
             }
         }
     }
 
     private fun handle(sideEffect: SideEffect): Observable<Any> {
         return when (sideEffect) {
-            is SideEffect.RibAttached -> Observable.empty()
+            is SideEffect.OnRibSwitched -> Observable.empty()
         }
     }
 
     override fun createInitialState(savedInstanceState: Bundle?): State {
-        return State(selectedNavigationItemId = R.id.action_home)
+        return State(selectedNavigationItem = NavigationItem.HOME)
     }
 
     override fun observeInitialActions(): Observable<Any> {
         return Observable.empty()
     }
 
-    data class State(val selectedNavigationItemId: Int)
+    data class State(val selectedNavigationItem: NavigationItem)
+
+    enum class NavigationItem(val id: Int) {
+        HOME(R.id.action_home) {
+            override fun attach(router: NavigationRouter) {
+                router.attachHome()
+            }
+
+            override fun detach(router: NavigationRouter) {
+                router.detachHome()
+            }
+        },
+        PAYMENTS(R.id.action_payments) {
+            override fun attach(router: NavigationRouter) {
+                router.attachPayments()
+            }
+
+            override fun detach(router: NavigationRouter) {
+                router.detachPayments()
+            }
+        },
+        STATISTICS(R.id.action_statistics) {
+            override fun attach(router: NavigationRouter) {
+                router.attachStatistics()
+            }
+
+            override fun detach(router: NavigationRouter) {
+                router.detachStatistics()
+            }
+        },
+        MENU(R.id.action_menu) {
+            override fun attach(router: NavigationRouter) {
+                router.attachMenu()
+            }
+
+            override fun detach(router: NavigationRouter) {
+                router.detachMenu()
+            }
+        };
+
+        abstract fun attach(router: NavigationRouter)
+        abstract fun detach(router: NavigationRouter)
+    }
 
     private sealed class SideEffect {
-        class RibAttached(val id: Int) : SideEffect()
+        class OnRibSwitched(val item: NavigationItem) : SideEffect()
     }
 }

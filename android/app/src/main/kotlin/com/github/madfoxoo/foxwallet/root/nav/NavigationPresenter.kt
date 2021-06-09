@@ -8,6 +8,6 @@ import com.github.madfoxoo.foxwallet.core.rib.MviPresenter
 interface NavigationPresenter : MviPresenter<NavigationInteractor.State, NavigationPresenter.UiEvent> {
 
     sealed class UiEvent {
-        class NavigationItemSelected(val id: Int) : UiEvent()
+        class NavigationItemSelected(val item: NavigationInteractor.NavigationItem) : UiEvent()
     }
 }
