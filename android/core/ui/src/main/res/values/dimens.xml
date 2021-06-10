@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fw_margin_xs">8dp</dimen>
+    <dimen name="fw_margin_s">12dp</dimen>
+    <dimen name="fw_margin_m">16dp</dimen>
+
+    <dimen name="fw_corner_size_s">8dp</dimen>
+    <dimen name="fw_corner_size_m">16dp</dimen>
+    <dimen name="fw_corner_size_l">24dp</dimen>
+</resources>

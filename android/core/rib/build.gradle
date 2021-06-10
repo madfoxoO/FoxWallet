@@ -1,5 +1,8 @@
 apply from: rootProject.file('gradle/android-library.gradle')
+apply from: rootProject.file('gradle/test.gradle')
 
 dependencies {
     api deps.libraries.rib
+
+    testImplementation deps.test.rib
 }

@@ -42,8 +42,9 @@ android {
 
 repositories {
     google()
-    jcenter()
     maven { url deps.build.urls.gradlePlugins }
+    jcenter()
+    mavenCentral()
 }
 
 dependencies {
