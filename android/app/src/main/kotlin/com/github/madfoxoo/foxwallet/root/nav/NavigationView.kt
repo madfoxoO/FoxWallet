@@ -2,12 +2,11 @@ package com.github.madfoxoo.foxwallet.root.nav
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.github.madfoxoo.foxwallet.R
 import com.github.madfoxoo.foxwallet.core.test.Mockable
-import com.github.madfoxoo.foxwallet.root.nav.NavigationPresenter.UiEvent
 import com.github.madfoxoo.foxwallet.root.nav.NavigationInteractor.NavigationItem
+import com.github.madfoxoo.foxwallet.root.nav.NavigationPresenter.UiEvent
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -28,16 +27,6 @@ class NavigationView @JvmOverloads constructor(
 
     private lateinit var bottomNavigationView: BottomNavigationView
 
-    override fun observeUiEvents(): Observable<UiEvent> {
-        return uiEventsSubject.hide()
-    }
-
-    override fun render(state: NavigationInteractor.State) {
-        if (bottomNavigationView.selectedItemId != state.selectedNavigationItem.id) {
-            bottomNavigationView.selectedItemId = state.selectedNavigationItem.id
-        }
-    }
-
     override fun onFinishInflate() {
         super.onFinishInflate()
         bottomNavigationView = findViewById(R.id.bottomNavigationView)
@@ -45,6 +34,16 @@ class NavigationView @JvmOverloads constructor(
             val navigationItem = NavigationItem.valueOf(menuItem.itemId)
             uiEventsSubject.onNext(UiEvent.NavigationItemSelected(navigationItem))
             true
+        }
+    }
+
+    override fun observeUiEvents(): Observable<UiEvent> {
+        return uiEventsSubject.hide()
+    }
+
+    override fun selectNavigationItem(item: NavigationItem) {
+        if (bottomNavigationView.selectedItemId != item.id) {
+            bottomNavigationView.selectedItemId = item.id
         }
     }
 }

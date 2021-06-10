@@ -51,10 +51,7 @@ class NavigationBuilder(dependency: ParentComponent) :
             .let { it as NavigationView }
     }
 
-    interface ParentComponent {
-        @ThreadConfig(ThreadConfig.Type.UI)
-        fun uiScheduler(): Scheduler
-    }
+    interface ParentComponent
 
     @dagger.Module
     abstract class Module {

@@ -59,9 +59,15 @@ abstract class MviInteractor<S : Any, P : MviPresenter<S, *>, R : Router<*>> : I
 
     protected abstract fun createInitialState(savedInstanceState: Bundle?): S
 
-    protected abstract fun observeInitialActions(): Observable<Any>
+    protected open fun observeInitialActions(): Observable<out Any> {
+        return Observable.empty()
+    }
 
-    protected abstract fun reduce(state: S, action: Any): S
+    protected open fun reduce(state: S, action: Any): S {
+        return state
+    }
 
-    protected abstract fun handle(action: Any): Observable<Any>
+    protected open fun handle(action: Any): Observable<out Any> {
+        return Observable.empty()
+    }
 }

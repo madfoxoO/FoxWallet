@@ -13,18 +13,6 @@ open class TestMviInteractor : MviInteractor<String, MviPresenter<String, String
 
     override lateinit var uiScheduler: Scheduler
 
-    public override fun reduce(state: String, action: Any): String {
-        return state
-    }
-
-    public override fun handle(action: Any): Observable<Any> {
-        return Observable.empty()
-    }
-
-    public override fun observeInitialActions(): Observable<Any> {
-        return Observable.empty()
-    }
-
     public override fun createInitialState(savedInstanceState: Bundle?): String {
         return savedInstanceState?.getString(KEY_STATE) ?: MviInteractorTest.INITIAL_STATE
     }
@@ -40,12 +28,6 @@ open class TestMviInteractor : MviInteractor<String, MviPresenter<String, String
             interactor.presenter = presenter
             interactor.uiScheduler = uiScheduler
             return interactor
-        }
-
-        fun createSavedState(state: String): Bundle {
-            return Bundle().apply {
-                putString(KEY_STATE, state)
-            }
         }
     }
 }

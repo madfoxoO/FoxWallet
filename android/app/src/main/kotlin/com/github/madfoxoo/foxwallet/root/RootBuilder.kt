@@ -43,10 +43,7 @@ class RootBuilder(dependency: ParentComponent) :
             .let { it as RootView }
     }
 
-    interface ParentComponent {
-        @ThreadConfig(ThreadConfig.Type.UI)
-        fun uiScheduler(): Scheduler
-    }
+    interface ParentComponent
 
     @dagger.Module
     abstract class Module {
