@@ -130,6 +130,14 @@ class NavigationInteractor :
 
         abstract fun attach(router: NavigationRouter)
         abstract fun detach(router: NavigationRouter)
+
+        companion object {
+
+            @JvmStatic
+            fun valueOf(id: Int): NavigationItem {
+                return values().first { it.id == id }
+            }
+        }
     }
 
     private sealed class SideEffect {

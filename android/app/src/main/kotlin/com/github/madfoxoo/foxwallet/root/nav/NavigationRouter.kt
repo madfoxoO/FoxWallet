@@ -68,6 +68,7 @@ class NavigationRouter(
         val router = statisticsBuilder.build(view)
         attachChild(router)
         view.addView(router.view)
+        statisticsRouter = router
     }
 
     fun detachStatistics() {
@@ -82,6 +83,7 @@ class NavigationRouter(
         val router = menuBuilder.build(view)
         attachChild(router)
         view.addView(router.view)
+        menuRouter = router
     }
 
     fun detachMenu() {

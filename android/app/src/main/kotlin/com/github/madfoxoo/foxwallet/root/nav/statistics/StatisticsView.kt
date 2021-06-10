@@ -3,6 +3,7 @@ package com.github.madfoxoo.foxwallet.root.nav.statistics
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.widget.FrameLayout
 import com.github.madfoxoo.foxwallet.core.test.Mockable
 
 /**
@@ -13,5 +14,5 @@ class StatisticsView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
-) : View(context, attrs, defStyle),
+) : FrameLayout(context, attrs, defStyle),
     StatisticsPresenter

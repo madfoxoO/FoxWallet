@@ -2,6 +2,7 @@ package com.github.madfoxoo.foxwallet.root.nav.menu
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.github.madfoxoo.foxwallet.R
 import com.github.madfoxoo.foxwallet.core.test.Mockable
 import com.uber.rib.core.InteractorBaseComponent
 import com.uber.rib.core.ViewBuilder
@@ -36,7 +37,9 @@ class MenuBuilder(dependency: ParentComponent) :
     }
 
     override fun inflateView(inflater: LayoutInflater, parentViewGroup: ViewGroup): MenuView {
-        return MenuView(parentViewGroup.context)
+        return inflater
+            .inflate(R.layout.rib_menu, parentViewGroup, false)
+            .let { it as MenuView }
     }
 
     interface ParentComponent

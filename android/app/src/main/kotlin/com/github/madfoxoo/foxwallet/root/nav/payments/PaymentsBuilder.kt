@@ -2,6 +2,7 @@ package com.github.madfoxoo.foxwallet.root.nav.payments
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.github.madfoxoo.foxwallet.R
 import com.github.madfoxoo.foxwallet.core.test.Mockable
 import com.uber.rib.core.InteractorBaseComponent
 import com.uber.rib.core.ViewBuilder
@@ -36,7 +37,10 @@ class PaymentsBuilder(dependency: ParentComponent) :
     }
 
     override fun inflateView(inflater: LayoutInflater, parentViewGroup: ViewGroup): PaymentsView {
-        return PaymentsView(parentViewGroup.context)
+        return inflater
+            .inflate(R.layout.rib_payments, parentViewGroup, false)
+            .let { it as PaymentsView }
+
     }
 
     interface ParentComponent
