@@ -16,6 +16,7 @@ import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.uber.rib.core.RouterHelper
+import com.uber.rib.core.ViewRouter
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -62,87 +63,89 @@ class NavigationRouterTest {
     }
 
     @Test
-    fun attachesHomeRib() {
+    fun attachesHomeRibToNavigationRib() {
         stubHomeRib()
 
         router.attachHome()
 
-        RouterHelper.verifyAttached(homeRouter)
-        verify(view).addView(homeView)
+        verifyRibAttached(homeRouter)
     }
 
     @Test
-    fun detachesHomeRib() {
+    fun detachesHomeRibFromNavigationRib() {
         stubHomeRib()
 
         router.attachHome()
         router.detachHome()
 
-        RouterHelper.verifyDetached(homeRouter)
-        verify(view).removeView(homeView)
+        verifyRibDetached(homeRouter)
     }
 
     @Test
-    fun attachesPaymentsRib() {
+    fun attachesPaymentsRibToNavigationRib() {
         stubPaymentsRib()
 
         router.attachPayments()
 
-        RouterHelper.verifyAttached(paymentsRouter)
-        verify(view).addView(paymentsView)
+        verifyRibAttached(paymentsRouter)
     }
 
     @Test
-    fun detachesPaymentsRib() {
+    fun detachesPaymentsRibFromNavigationRib() {
         stubPaymentsRib()
 
         router.attachPayments()
         router.detachPayments()
 
-        RouterHelper.verifyDetached(paymentsRouter)
-        verify(view).removeView(paymentsView)
+        verifyRibDetached(paymentsRouter)
     }
 
     @Test
-    fun attachesStatisticsRib() {
+    fun attachesStatisticsRibToNavigationRib() {
         stubStatisticsRib()
 
         router.attachStatistics()
 
-        RouterHelper.verifyAttached(statisticsRouter)
-        verify(view).addView(statisticsView)
+        verifyRibAttached(statisticsRouter)
     }
 
     @Test
-    fun detachesStatisticsRib() {
+    fun detachesStatisticsRibFromNavigationRib() {
         stubStatisticsRib()
 
         router.attachStatistics()
         router.detachStatistics()
 
-        RouterHelper.verifyDetached(statisticsRouter)
-        verify(view).removeView(statisticsView)
+        verifyRibDetached(statisticsRouter)
     }
 
     @Test
-    fun attachesMenuRib() {
+    fun attachesMenuRibToNavigationRib() {
         stubMenuRib()
 
         router.attachMenu()
 
-        RouterHelper.verifyAttached(menuRouter)
-        verify(view).addView(menuView)
+        verifyRibAttached(menuRouter)
     }
 
     @Test
-    fun detachesMenuRib() {
+    fun detachesMenuRibFromNavigationRib() {
         stubMenuRib()
 
         router.attachMenu()
         router.detachMenu()
 
-        RouterHelper.verifyDetached(menuRouter)
-        verify(view).removeView(menuView)
+        verifyRibDetached(menuRouter)
+    }
+
+    private fun verifyRibAttached(viewRouter: ViewRouter<*, *>) {
+        RouterHelper.verifyAttached(viewRouter)
+        verify(view).addView(viewRouter.view)
+    }
+
+    private fun verifyRibDetached(viewRouter: ViewRouter<*, *>) {
+        RouterHelper.verifyDetached(viewRouter)
+        verify(view).removeView(viewRouter.view)
     }
 
     private fun stubHomeRib() {

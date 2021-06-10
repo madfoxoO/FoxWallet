@@ -9,6 +9,7 @@ import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsBuilder
 import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsRouter
 import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsBuilder
 import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsRouter
+import com.uber.rib.core.Router
 import com.uber.rib.core.ViewRouter
 
 /**
@@ -35,62 +36,51 @@ class NavigationRouter(
     private var menuRouter: MenuRouter? = null
 
     fun attachHome() {
-        val router = homeBuilder.build(view)
-        attachChild(router)
-        view.addView(router.view)
-        homeRouter = router
+        homeRouter = attach(homeBuilder.build(view))
     }
 
     fun detachHome() {
-        val router = homeRouter ?: return
-
-        detachChild(router)
-        view.removeView(router.view)
+        detach(homeRouter)
         homeRouter = null
     }
 
     fun attachPayments() {
-        val router = paymentsBuilder.build(view)
-        attachChild(router)
-        view.addView(router.view)
-        paymentsRouter = router
+        paymentsRouter = attach(paymentsBuilder.build(view))
     }
 
     fun detachPayments() {
-        val router = paymentsRouter ?: return
-
-        detachChild(router)
-        view.removeView(router.view)
+        detach(paymentsRouter)
         paymentsRouter = null
     }
 
     fun attachStatistics() {
-        val router = statisticsBuilder.build(view)
-        attachChild(router)
-        view.addView(router.view)
-        statisticsRouter = router
+        statisticsRouter = attach(statisticsBuilder.build(view))
     }
 
     fun detachStatistics() {
-        val router = statisticsRouter ?: return
-
-        detachChild(router)
-        view.removeView(router.view)
+        detach(statisticsRouter)
         statisticsRouter = null
     }
 
     fun attachMenu() {
-        val router = menuBuilder.build(view)
-        attachChild(router)
-        view.addView(router.view)
-        menuRouter = router
+        menuRouter = attach(menuBuilder.build(view))
     }
 
     fun detachMenu() {
-        val router = menuRouter ?: return
-
-        detachChild(menuRouter)
-        view.removeView(router.view)
+        detach(menuRouter)
         menuRouter = null
+    }
+
+    private fun <T : ViewRouter<*, *>> attach(router: T): T {
+        attachChild(router)
+        view.addView(router.view)
+        return router
+    }
+
+    private fun detach(router: ViewRouter<*, *>?) {
+        if (router != null) {
+            detachChild(router)
+            view.removeView(router.view)
+        }
     }
 }
