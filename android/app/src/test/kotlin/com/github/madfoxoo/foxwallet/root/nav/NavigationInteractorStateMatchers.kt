@@ -11,29 +11,20 @@ object NavigationInteractorStateMatchers {
     }
 }
 
-private abstract class NavigationInteractorStateBaseMatcher : BaseMatcher<NavigationInteractor.State>() {
-
-    final override fun describeMismatch(item: Any?, description: Description) {
-        description.appendText("was ")
-        if (item is NavigationInteractor.State) {
-            describeMismatch(item, description)
-        } else {
-            description.appendValue(item)
-        }
-    }
-
-    abstract fun describeMismatch(item: NavigationInteractor.State, description: Description)
-}
-
 private class HasSelectedNavigationItem(private val expectedValue: NavigationInteractor.NavigationItem) :
-    NavigationInteractorStateBaseMatcher() {
+    BaseMatcher<NavigationInteractor.State>() {
 
     override fun describeTo(description: Description) {
         description.appendValue(expectedValue.name)
     }
 
-    override fun describeMismatch(item: NavigationInteractor.State, description: Description) {
-        description.appendValue(item.selectedNavigationItem.name)
+    override fun describeMismatch(item: Any?, description: Description) {
+        description.appendValue("was ")
+        if (item is NavigationInteractor.State) {
+            description.appendValue(item.selectedNavigationItem)
+        } else {
+            description.appendValue(item)
+        }
     }
 
     override fun matches(item: Any?): Boolean {
