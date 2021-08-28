@@ -8,5 +8,6 @@ include ':core:utils'
 include ':core:rib'
 include ':core:dagger'
 include ':core:ui'
+include ':core:recycler'
 
 // feature modules
