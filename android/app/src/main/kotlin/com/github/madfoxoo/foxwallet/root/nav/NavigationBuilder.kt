@@ -3,7 +3,6 @@ package com.github.madfoxoo.foxwallet.root.nav
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.github.madfoxoo.foxwallet.R
-import com.github.madfoxoo.foxwallet.dagger.ThreadConfig
 import com.github.madfoxoo.foxwallet.root.nav.home.HomeBuilder
 import com.github.madfoxoo.foxwallet.root.nav.menu.MenuBuilder
 import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsBuilder
@@ -13,7 +12,6 @@ import com.uber.rib.core.ViewBuilder
 import dagger.Binds
 import dagger.BindsInstance
 import dagger.Provides
-import io.reactivex.Scheduler
 import javax.inject.Qualifier
 import javax.inject.Scope
 

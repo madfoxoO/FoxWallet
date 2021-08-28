@@ -3,14 +3,12 @@ package com.github.madfoxoo.foxwallet.root
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.github.madfoxoo.foxwallet.R
-import com.github.madfoxoo.foxwallet.dagger.ThreadConfig
 import com.github.madfoxoo.foxwallet.root.nav.NavigationBuilder
 import com.uber.rib.core.InteractorBaseComponent
 import com.uber.rib.core.ViewBuilder
 import dagger.Binds
 import dagger.BindsInstance
 import dagger.Provides
-import io.reactivex.Scheduler
 import javax.inject.Qualifier
 import javax.inject.Scope
 

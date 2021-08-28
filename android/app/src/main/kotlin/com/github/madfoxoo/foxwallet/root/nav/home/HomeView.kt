@@ -2,7 +2,6 @@ package com.github.madfoxoo.foxwallet.root.nav.home
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.FrameLayout
 import com.github.madfoxoo.foxwallet.core.test.Mockable
 

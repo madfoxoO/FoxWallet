@@ -40,7 +40,6 @@ class PaymentsBuilder(dependency: ParentComponent) :
         return inflater
             .inflate(R.layout.rib_payments, parentViewGroup, false)
             .let { it as PaymentsView }
-
     }
 
     interface ParentComponent

@@ -17,6 +17,18 @@ open class TestMviInteractor : MviInteractor<String, MviPresenter<String, String
         return savedInstanceState?.getString(KEY_STATE) ?: MviInteractorTest.INITIAL_STATE
     }
 
+    public override fun observeInitialActions(): Observable<out Any> {
+        return super.observeInitialActions()
+    }
+
+    public override fun reduce(state: String, action: Any): String {
+        return super.reduce(state, action)
+    }
+
+    public override fun handle(action: Any): Observable<out Any> {
+        return super.handle(action)
+    }
+
     companion object {
         const val KEY_STATE = "state"
 

@@ -40,7 +40,6 @@ class StatisticsBuilder(dependency: ParentComponent) :
         return inflater
             .inflate(R.layout.rib_statistics, parentViewGroup, false)
             .let { it as StatisticsView }
-
     }
 
     interface ParentComponent

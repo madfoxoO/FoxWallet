@@ -25,6 +25,7 @@ dependencies {
     implementation deps.libraries.google.material
     implementation deps.libraries.google.dagger
     implementation deps.libraries.rx.android
+    implementation deps.libraries.adapterdelegates
 
     testImplementation deps.test.rib
 }

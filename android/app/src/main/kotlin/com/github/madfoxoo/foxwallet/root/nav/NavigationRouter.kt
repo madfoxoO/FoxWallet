@@ -9,7 +9,6 @@ import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsBuilder
 import com.github.madfoxoo.foxwallet.root.nav.payments.PaymentsRouter
 import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsBuilder
 import com.github.madfoxoo.foxwallet.root.nav.statistics.StatisticsRouter
-import com.uber.rib.core.Router
 import com.uber.rib.core.ViewRouter
 
 /**
